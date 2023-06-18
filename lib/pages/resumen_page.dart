@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../models/encuentro.dart';
-import '../models/jugador.dart';
-import '../utils/colecciones_id.dart';
-import '../utils/util_idioma.dart';
-import '../widgets/widget_loading.dart';
+import '../app/models/encuentro.dart';
+import '../app/models/jugador.dart';
+import '../app/utils/colecciones_id.dart';
+import '../app/utils/idioma.dart';
+import '../app/widgets/loading.dart';
 import '../app/widgets/no_data.dart';
-import '../widgets/widget_tarjeta.dart';
+import '../app/widgets/widget_tarjeta.dart';
 
 
 class ResumenPage extends StatefulWidget {
@@ -81,7 +81,7 @@ class _ResumenPageState extends State<ResumenPage> {
     return StreamBuilder(
         stream: _referenceJugadoresA!.snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) return WidgetLoading();
+          if (!snapshot.hasData) return Loading();
 
           _jugador.getJugadoresResumen(snapshot);
 
@@ -101,7 +101,7 @@ class _ResumenPageState extends State<ResumenPage> {
     return StreamBuilder(
         stream: _referenceJugadoresB!.snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (!snapshot.hasData) return WidgetLoading();
+          if (!snapshot.hasData) return Loading();
 
           _jugador.getJugadoresResumen(snapshot);
 

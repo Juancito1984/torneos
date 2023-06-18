@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:torneos/app/modules/home_module/home_controller.dart';
 import 'package:torneos/app/modules/home_module/widgets/home_drawer.dart';
 import 'package:torneos/app/modules/home_module/widgets/list_campeonatos.dart';
+import 'package:torneos/app/widgets/loading.dart';
 import 'package:torneos/app/widgets/no_data.dart';
 
 class HomePage extends GetView<HomeController> {
@@ -23,6 +24,7 @@ class HomePage extends GetView<HomeController> {
                     title: Text(controller.idioma.titleHomePage.toUpperCase())),
                 body: controller.obx(
                   (state) => ListCampeonatos(campeonatos: state!),
+                  onLoading: Loading(),
                   onEmpty: NoData(controller.idioma.noData),
                   onError: (error) => NoData(error!),
                 ),

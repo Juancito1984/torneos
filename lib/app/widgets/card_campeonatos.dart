@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:torneos/app/models/campeonato_model.dart';
 
-import '../models/my_campeonato.dart';
-import '../pages/initial_page.dart';
-import '../utils/util_idioma.dart';
+import '../../pages/initial_page.dart';
+import '../utils/idioma.dart';
 import '../utils/util_images.dart';
-
-
 
 class CardCampeonatos extends StatelessWidget {
   final CampeonatoModel campeonato;
@@ -42,7 +39,8 @@ class CardCampeonatos extends StatelessWidget {
                   ? _utilIdioma.idadVuelta
                   : _utilIdioma.soloIda
               : campeonato.campeon,
-          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+          style:
+              const TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
         ),
         onTap: () {
           final route = MaterialPageRoute(

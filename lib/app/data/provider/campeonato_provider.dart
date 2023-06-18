@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:torneos/app/data/repository/campeonato_repository.dart';
 import 'package:torneos/app/models/campeonato_model.dart';
 
-import '../../../utils/colecciones_id.dart';
+import '../../utils/colecciones_id.dart';
 
 class CampeonatoProvider extends CampeonatoRepository {
   CampeonatoProvider._();

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:torneos/app/models/campeonato_model.dart';
 import 'package:torneos/app/modules/home_module/widgets/item_campeonato.dart';
-import 'package:torneos/app/widgets/no_data.dart';
 
 class ListCampeonatos extends StatelessWidget {
   final List<CampeonatoModel> campeonatos;
@@ -13,9 +12,8 @@ class ListCampeonatos extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.separated(
+    return ListView.builder(
       itemCount: campeonatos.length,
-      separatorBuilder: (_, __) => const Divider(),
       itemBuilder: (BuildContext context, int index) {
         final campeonato = campeonatos[index];
 

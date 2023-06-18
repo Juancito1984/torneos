@@ -1,8 +1,11 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:torneos/app/modules/splash_module/splash_controller.dart';
 import 'package:torneos/app/theme/app_colors.dart';
-import 'package:torneos/utils/util_images.dart';
+import 'package:torneos/app/utils/util_images.dart';
+
+import '../../routes/app_pages.dart';
 
 class SplashPage extends GetView<SplashController> {
   const SplashPage({super.key});

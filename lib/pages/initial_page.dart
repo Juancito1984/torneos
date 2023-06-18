@@ -5,8 +5,7 @@ import 'package:torneos/app/models/campeonato_model.dart';
 import 'package:torneos/pages/posiciones_page.dart';
 
 import '../app/theme/app_colors.dart';
-import '../models/my_campeonato.dart';
-import '../utils/util_idioma.dart';
+import '../app/utils/idioma.dart';
 import 'estadisticas_page.dart';
 import 'fechas_page.dart';
 

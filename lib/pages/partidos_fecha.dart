@@ -6,13 +6,12 @@ import 'package:torneos/app/models/campeonato_model.dart';
 import 'package:torneos/app/theme/app_colors.dart';
 import 'package:torneos/pages/resumen_page.dart';
 
-import '../models/my_campeonato.dart';
-import '../models/encuentro.dart';
-import '../models/fecha.dart';
-import '../utils/colecciones_id.dart';
-import '../utils/util_idioma.dart';
-import '../utils/util_images.dart';
-import '../widgets/widget_loading.dart';
+import '../app/models/encuentro.dart';
+import '../app/models/fecha.dart';
+import '../app/utils/colecciones_id.dart';
+import '../app/utils/idioma.dart';
+import '../app/utils/util_images.dart';
+import '../app/widgets/loading.dart';
 import '../app/widgets/no_data.dart';
 
 class PartidosFecha extends StatefulWidget {
@@ -74,7 +73,7 @@ class _PartidosFechaState extends State<PartidosFecha> {
     return StreamBuilder(
       stream: _stream,
       builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (!snapshot.hasData) return WidgetLoading();
+        if (!snapshot.hasData) return Loading();
 
         _encuentro.getEncuentros(snapshot);
 

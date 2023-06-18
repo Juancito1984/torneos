@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 
-import '../models/jugador.dart';
-import '../utils/util_idioma.dart';
-import '../utils/util_images.dart';
+import '../app/models/jugador.dart';
+import '../app/utils/idioma.dart';
+import '../app/utils/util_images.dart';
 
 class InfoJugador extends StatelessWidget {
   final Jugador jugador;

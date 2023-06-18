@@ -1,14 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:torneos/app/modules/login_module/login_bindings.dart';
-import 'package:torneos/app/modules/login_module/login_page.dart';
 import 'package:torneos/app/modules/splash_module/splash_bindings.dart';
 import 'package:torneos/app/modules/splash_module/splash_page.dart';
 import 'package:torneos/app/routes/app_pages.dart';
 import 'package:torneos/app/theme/app_colors.dart';
-import 'package:torneos/pages/my_home_page.dart';
-import 'package:torneos/pages/my_login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

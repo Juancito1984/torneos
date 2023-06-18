@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class LoginButtom extends StatelessWidget {
   final Function()? onPressed;
@@ -19,6 +18,9 @@ class LoginButtom extends StatelessWidget {
       onPressed: onPressed,
       icon: icon,
       label: Text(label),
+      style: const ButtonStyle(
+        padding: MaterialStatePropertyAll(EdgeInsets.all(10)),
+      ),
     );
   }
 }

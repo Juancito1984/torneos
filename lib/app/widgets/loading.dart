@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../utils/util_idioma.dart';
+import '../utils/idioma.dart';
 import '../utils/util_images.dart';
 
 
-class WidgetLoading extends StatelessWidget {
+class Loading extends StatelessWidget {
   final _urlImages = UrlImages();
   final _idioma = Idioma();
 
-  WidgetLoading({super.key});
+  Loading({super.key});
 
   @override
   Widget build(BuildContext context) {

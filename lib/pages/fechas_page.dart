@@ -6,11 +6,10 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:torneos/app/models/campeonato_model.dart';
 import 'package:torneos/pages/partidos_fecha.dart';
 
-import '../models/my_campeonato.dart';
-import '../models/fecha.dart';
-import '../utils/colecciones_id.dart';
-import '../utils/util_idioma.dart';
-import '../widgets/widget_loading.dart';
+import '../app/models/fecha.dart';
+import '../app/utils/colecciones_id.dart';
+import '../app/utils/idioma.dart';
+import '../app/widgets/loading.dart';
 import '../app/widgets/no_data.dart';
 
 
@@ -61,7 +60,7 @@ class _FechasPageState extends State<FechasPage> {
     return StreamBuilder(
       stream: _referenceFechas!.snapshots(),
       builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (!snapshot.hasData) return WidgetLoading();
+        if (!snapshot.hasData) return Loading();
 
         _fecha.getFechas(snapshot);
 

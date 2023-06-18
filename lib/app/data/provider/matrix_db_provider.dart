@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../../utils/colecciones_id.dart';
+import '../../utils/colecciones_id.dart';
 import '../../models/initial_doc.dart';
 import '../repository/matrix_db_repòsitory.dart';
 

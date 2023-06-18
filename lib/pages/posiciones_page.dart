@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:torneos/app/models/campeonato_model.dart';
 import 'package:torneos/pages/portrait/posiciones_page_portrait.dart';
 
-import '../models/my_campeonato.dart';
 import 'landscape/posiciones_page_landscape.dart';
 
 

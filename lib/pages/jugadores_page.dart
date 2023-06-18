@@ -4,15 +4,14 @@ import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:torneos/app/models/campeonato_model.dart';
-import 'package:torneos/utils/util_idioma.dart';
+import 'package:torneos/app/utils/idioma.dart';
 
-import '../models/my_campeonato.dart';
-import '../models/equipo.dart';
-import '../models/jugador.dart';
-import '../utils/colecciones_id.dart';
-import '../utils/util_images.dart';
-import '../widgets/widget_item_design.dart';
-import '../widgets/widget_loading.dart';
+import '../app/models/equipo.dart';
+import '../app/models/jugador.dart';
+import '../app/utils/colecciones_id.dart';
+import '../app/utils/util_images.dart';
+import '../app/widgets/widget_item_design.dart';
+import '../app/widgets/loading.dart';
 import '../app/widgets/no_data.dart';
 import 'info_jugador_page.dart';
 
@@ -87,7 +86,7 @@ class _JugadoresPageState extends State<JugadoresPage> {
     return StreamBuilder(
       stream: _stream,
       builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-        if (!snapshot.hasData) return WidgetLoading();
+        if (!snapshot.hasData) return Loading();
 
         _jugador.getJugadoresEquipo(snapshot: snapshot);
 

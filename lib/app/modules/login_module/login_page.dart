@@ -16,9 +16,9 @@ class LoginPage extends GetView<LoginController> {
       body: Stack(
         alignment: Alignment.center,
         children: [
-          //FOndo de pantalla
+          //Fondo de pantalla
           SizedBox(
-            height: MediaQuery.of(context).size.height,
+            height: Get.size.height,
             child: Image(
               image: AssetImage(controller.urlImages.fondoLogin),
               fit: BoxFit.cover,

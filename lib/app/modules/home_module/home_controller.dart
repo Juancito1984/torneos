@@ -9,10 +9,8 @@ import 'package:torneos/app/data/provider/login_provider.dart';
 import 'package:torneos/app/data/provider/matrix_db_provider.dart';
 import 'package:torneos/app/models/campeonato_model.dart';
 
-import '../../../models/my_campeonato.dart';
-import '../../../utils/util_colors.dart';
-import '../../../utils/util_idioma.dart';
-import '../../../utils/util_images.dart';
+import '../../utils/idioma.dart';
+import '../../utils/util_images.dart';
 import '../../models/initial_doc.dart';
 import '../../theme/app_colors.dart';
 
@@ -24,8 +22,7 @@ class HomeController extends GetxController
 
   final urlImages = UrlImages();
   final idioma = Idioma();
-  final colors = UtilColors();
-  final campeonato = MyCampeonato();
+  // final colors = UtilColors();
 
   final User? user = FirebaseAuth.instance.currentUser;
   CollectionReference? _referenceBase;
@@ -109,7 +106,7 @@ class HomeController extends GetxController
       actions: <Widget>[
         MaterialButton(
           elevation: 0.0,
-          color: colors.buttonColor.withOpacity(0.7),
+          color: buttonColor.withOpacity(0.7),
           textColor: Colors.white,
           onPressed: () => Get.back(),
           child: Text(idioma.aceptar),

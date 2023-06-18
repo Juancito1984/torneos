@@ -5,6 +5,8 @@ import 'package:get/get.dart';
 import 'package:torneos/app/modules/home_module/home_controller.dart';
 import 'package:torneos/app/routes/app_pages.dart';
 
+import '../../../theme/app_colors.dart';
+
 class HomeDrawer extends GetView<HomeController> {
   const HomeDrawer({super.key});
 
@@ -41,11 +43,11 @@ class HomeDrawer extends GetView<HomeController> {
                   //Acerca de...
                   ListTile(
                     leading: Icon(FontAwesomeIcons.infoCircle,
-                        size: 20.0, color: controller.colors.primaryColor),
+                        size: 20.0, color: primaryColor),
                     title: Text(controller.idioma.titleAcerca),
                     subtitle: Text(controller.idioma.despAcerca),
-                    trailing: Icon(Icons.arrow_forward,
-                        size: 25.0, color: controller.colors.accentColor),
+                    trailing: const Icon(Icons.arrow_forward,
+                        size: 25.0, color: accentColor),
                     onTap: () {
                       Navigator.pop(context);
                       controller.acercaDe();
@@ -54,11 +56,11 @@ class HomeDrawer extends GetView<HomeController> {
                   //Cerrar sesion
                   ListTile(
                     leading: Icon(FontAwesomeIcons.doorOpen,
-                        size: 20.0, color: controller.colors.primaryColor),
+                        size: 20.0, color: primaryColor),
                     title: Text(controller.idioma.cerrarSesion),
                     subtitle: Text(controller.idioma.despcerrarSesion),
-                    trailing: Icon(Icons.arrow_forward,
-                        size: 25.0, color: controller.colors.accentColor),
+                    trailing: const Icon(Icons.arrow_forward,
+                        size: 25.0, color: accentColor),
                     onTap: () {
                       controller.loginProvider.logout().then(
                             (value) => Get.offNamed(Routes.LOGIN),
@@ -70,11 +72,11 @@ class HomeDrawer extends GetView<HomeController> {
                   //Salir de la aplicacion
                   ListTile(
                     leading: Icon(FontAwesomeIcons.doorClosed,
-                        size: 20.0, color: controller.colors.primaryColor),
+                        size: 20.0, color: primaryColor),
                     title: Text(controller.idioma.titleSalir),
                     subtitle: Text(controller.idioma.despSalir),
-                    trailing: Icon(Icons.arrow_forward,
-                        size: 25.0, color: controller.colors.accentColor),
+                    trailing: const Icon(Icons.arrow_forward,
+                        size: 25.0, color: accentColor),
                     onTap: () {
                       Navigator.pop(context);
                       controller.buildAtras();

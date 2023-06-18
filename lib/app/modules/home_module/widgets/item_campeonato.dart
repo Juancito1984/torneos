@@ -4,10 +4,11 @@ import 'package:torneos/app/models/campeonato_model.dart';
 import 'package:torneos/app/modules/home_module/home_controller.dart';
 
 import '../../../../pages/initial_page.dart';
-
+import '../../../theme/app_colors.dart';
 
 class ItemCampeonato extends GetView<HomeController> {
   final CampeonatoModel campeonato;
+
   const ItemCampeonato({super.key, required this.campeonato});
 
   @override
@@ -16,9 +17,9 @@ class ItemCampeonato extends GetView<HomeController> {
       alignment: Alignment.center,
       margin: const EdgeInsets.all(5),
       height: 75.0,
-      width: MediaQuery.of(context).size.width,
+      width: Get.size.width,
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor.withOpacity(0.85),
+        color: primaryColor.withOpacity(0.85),
         borderRadius: BorderRadius.circular(20.0),
       ),
       child: ListTile(
@@ -33,10 +34,11 @@ class ItemCampeonato extends GetView<HomeController> {
         subtitle: Text(
           campeonato.campeon == ''
               ? campeonato.idaVuelta
-              ? controller.idioma.idadVuelta
-              : controller.idioma.soloIda
+                  ? controller.idioma.idadVuelta
+                  : controller.idioma.soloIda
               : campeonato.campeon,
-          style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
+          style:
+              const TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
         ),
         onTap: () {
           final route = MaterialPageRoute(

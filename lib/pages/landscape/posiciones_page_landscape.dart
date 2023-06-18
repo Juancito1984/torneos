@@ -3,13 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:torneos/app/models/campeonato_model.dart';
-import 'package:torneos/utils/util_idioma.dart';
+import 'package:torneos/app/utils/idioma.dart';
 
-import '../../models/my_campeonato.dart';
-import '../../models/equipo.dart';
-import '../../utils/colecciones_id.dart';
-import '../../utils/util_images.dart';
-import '../../widgets/widget_loading.dart';
+import '../../app/models/equipo.dart';
+import '../../app/utils/colecciones_id.dart';
+import '../../app/utils/util_images.dart';
+import '../../app/widgets/loading.dart';
 import '../../app/widgets/no_data.dart';
 
 
@@ -69,7 +68,7 @@ class _PosicionesPageLandscapeState extends State<PosicionesPageLandscape> {
             child: StreamBuilder(
               stream: _referenceEquipos!.snapshots(),
               builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (!snapshot.hasData) return WidgetLoading();
+                if (!snapshot.hasData) return Loading();
 
                 _equipo.getEquipos(snapshot);
 

@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:torneos/app/routes/app_pages.dart';
 
 class SplashController extends GetxController {
-  verifyUser()  async{
+  verifyUser() async {
     await FirebaseAuth.instance.currentUser != null
         ? Get.offNamed(Routes.HOME)
         : Get.offNamed(Routes.LOGIN);

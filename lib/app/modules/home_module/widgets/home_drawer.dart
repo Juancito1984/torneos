@@ -6,6 +6,7 @@ import 'package:torneos/app/modules/home_module/home_controller.dart';
 import 'package:torneos/app/routes/app_pages.dart';
 
 import '../../../theme/app_colors.dart';
+import '../../../utils/strings.dart';
 
 class HomeDrawer extends GetView<HomeController> {
   const HomeDrawer({super.key});
@@ -20,17 +21,17 @@ class HomeDrawer extends GetView<HomeController> {
               backgroundColor: Colors.transparent,
               backgroundImage: CachedNetworkImageProvider(
                 controller.user!.photoURL == null
-                    ? controller.urlImages!.logoUser
+                    ? controller.urlImages.logoUser
                     : controller.user!.photoURL!,
               ),
             ),
             // accountName: Text(_idioma.user),
             // accountEmail: Text(_idioma.email),
             accountName: controller.user!.displayName == null
-                ? Text(controller.idioma.user)
+                ? Text(user)
                 : Text(controller.user!.displayName!),
             accountEmail: controller.user!.email == null
-                ? Text(controller.idioma.email)
+                ? Text(email)
                 : Text(controller.user!.email!),
           ),
           Expanded(
@@ -44,8 +45,8 @@ class HomeDrawer extends GetView<HomeController> {
                   ListTile(
                     leading: Icon(FontAwesomeIcons.infoCircle,
                         size: 20.0, color: primaryColor),
-                    title: Text(controller.idioma.titleAcerca),
-                    subtitle: Text(controller.idioma.despAcerca),
+                    title: Text(titleAcerca),
+                    subtitle: Text(despAcerca),
                     trailing: const Icon(Icons.arrow_forward,
                         size: 25.0, color: accentColor),
                     onTap: () {
@@ -57,8 +58,8 @@ class HomeDrawer extends GetView<HomeController> {
                   ListTile(
                     leading: Icon(FontAwesomeIcons.doorOpen,
                         size: 20.0, color: primaryColor),
-                    title: Text(controller.idioma.cerrarSesion),
-                    subtitle: Text(controller.idioma.despcerrarSesion),
+                    title: Text(cerrarSesion),
+                    subtitle: Text(despcerrarSesion),
                     trailing: const Icon(Icons.arrow_forward,
                         size: 25.0, color: accentColor),
                     onTap: () {
@@ -73,8 +74,8 @@ class HomeDrawer extends GetView<HomeController> {
                   ListTile(
                     leading: Icon(FontAwesomeIcons.doorClosed,
                         size: 20.0, color: primaryColor),
-                    title: Text(controller.idioma.titleSalir),
-                    subtitle: Text(controller.idioma.despSalir),
+                    title: Text(titleSalir),
+                    subtitle: Text(despSalir),
                     trailing: const Icon(Icons.arrow_forward,
                         size: 25.0, color: accentColor),
                     onTap: () {

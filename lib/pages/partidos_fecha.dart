@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:get/get.dart';
 import 'package:torneos/app/models/campeonato_model.dart';
 import 'package:torneos/app/theme/app_colors.dart';
 import 'package:torneos/pages/resumen_page.dart';
@@ -9,7 +10,7 @@ import 'package:torneos/pages/resumen_page.dart';
 import '../app/models/encuentro.dart';
 import '../app/models/fecha.dart';
 import '../app/utils/colecciones_id.dart';
-import '../app/utils/idioma.dart';
+import '../app/utils/strings.dart';
 import '../app/utils/util_images.dart';
 import '../app/widgets/loading.dart';
 import '../app/widgets/no_data.dart';
@@ -18,7 +19,8 @@ class PartidosFecha extends StatefulWidget {
   final Fecha fecha;
   final CampeonatoModel campeonato;
 
-  PartidosFecha({
+  const PartidosFecha({
+    super.key,
     required this.fecha,
     required this.campeonato,
   });
@@ -30,7 +32,6 @@ class PartidosFecha extends StatefulWidget {
 class _PartidosFechaState extends State<PartidosFecha> {
   //ACCESO A MODELOS Y UTILIDADES
   final _urlImages = UrlImages();
-  final _idioma = Idioma();
   final _encuentro = Encuentro();
 
   //ACCESO A LA BASE DE DATOS
@@ -78,7 +79,7 @@ class _PartidosFechaState extends State<PartidosFecha> {
         _encuentro.getEncuentros(snapshot);
 
         return _encuentro.encuentros.isEmpty
-            ? NoData(_idioma.noPartidos)
+            ? const NoData(noPartidos)
             : SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -148,12 +149,13 @@ class _PartidosFechaState extends State<PartidosFecha> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Text(
-                    encuentro.estado,
+                    encuentro.estado.capitalize!,
                     style: TextStyle(color: Colors.white.withOpacity(0.8)),
+
                   ),
                   const SizedBox(height: 4.0),
                   Text(
-                    encuentro.estado != 'Hora'
+                    encuentro.estado != 'hora'
                         ? '${encuentro.goolA} - ${encuentro.goolB}'
                         : encuentro.hora,
                     style: const TextStyle(
@@ -198,7 +200,7 @@ class _PartidosFechaState extends State<PartidosFecha> {
         ),
       ),
       onTap: () {
-        if (encuentro.estado != _idioma.hora) {
+        if (encuentro.estado != hora) {
           final route = MaterialPageRoute(
             builder: (context) => ResumenPage(encuentro: encuentro),
           );
@@ -224,7 +226,7 @@ class _PartidosFechaState extends State<PartidosFecha> {
           content: Text(encuentro.comentario),
           actions: <Widget>[
             ElevatedButton(
-              child: Text(_idioma.aceptar),
+              child: Text(aceptar),
               onPressed: () => Navigator.pop(context),
             )
           ],

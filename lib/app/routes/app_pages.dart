@@ -1,3 +1,5 @@
+import '../../app/modules/initial_module/initial_page.dart';
+import '../../app/modules/initial_module/initial_bindings.dart';
 import '../../app/modules/home_module/home_page.dart';
 import '../../app/modules/home_module/home_bindings.dart';
 import '../../app/modules/login_module/login_page.dart';
@@ -26,6 +28,11 @@ abstract class AppPages {
       name: Routes.HOME,
       page: () => HomePage(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: Routes.INITIAL,
+      page: () => InitialPage(),
+      binding: InitialBinding(),
     ),
   ];
 }

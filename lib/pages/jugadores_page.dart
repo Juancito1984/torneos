@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:torneos/app/models/campeonato_model.dart';
-import 'package:torneos/app/utils/idioma.dart';
+import 'package:torneos/app/utils/strings.dart';
 
 import '../app/models/equipo.dart';
 import '../app/models/jugador.dart';
@@ -91,7 +91,7 @@ class _JugadoresPageState extends State<JugadoresPage> {
         _jugador.getJugadoresEquipo(snapshot: snapshot);
 
         return _jugador.jugadoresEquipo.isEmpty
-            ?  NoData(Idioma().noData)
+            ?  NoData(noData)
             : SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Column(

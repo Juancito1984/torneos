@@ -6,7 +6,7 @@ import 'package:torneos/app/models/campeonato_model.dart';
 
 import '../app/models/jugador.dart';
 import '../app/utils/colecciones_id.dart';
-import '../app/utils/idioma.dart';
+import '../app/utils/strings.dart';
 import '../app/utils/util_images.dart';
 import '../app/widgets/loading.dart';
 import '../app/widgets/no_data.dart';
@@ -21,7 +21,6 @@ class EstadisticasPage extends StatefulWidget {
 }
 
 class _EstadisticasPageState extends State<EstadisticasPage> {
-  final _idioma = Idioma();
   final _jugador = Jugador();
   final _urlImages = UrlImages();
 
@@ -62,7 +61,7 @@ class _EstadisticasPageState extends State<EstadisticasPage> {
         );
 
         return _jugador.jugadores.isEmpty
-            ? NoData(Idioma().noData)
+            ? NoData(noData)
             : SingleChildScrollView(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 10.0, vertical: 5.0),
@@ -170,7 +169,7 @@ class _EstadisticasPageState extends State<EstadisticasPage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           Text(
-            '${_idioma.nombre} y ${_idioma.equipo}'.toUpperCase(),
+            '$nombre y $equipo'.toUpperCase(),
             style: const TextStyle(
               fontSize: 18.0,
               color: Colors.white,

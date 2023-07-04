@@ -7,7 +7,7 @@ import 'package:torneos/app/models/campeonato_model.dart';
 
 import '../../app/models/equipo.dart';
 import '../../app/utils/colecciones_id.dart';
-import '../../app/utils/idioma.dart';
+import '../../app/utils/strings.dart';
 import '../../app/utils/util_images.dart';
 import '../../app/widgets/loading.dart';
 import '../../app/widgets/no_data.dart';
@@ -73,7 +73,7 @@ class _PosicionesPagePortraitState extends State<PosicionesPagePortrait> {
                 _equipo.getEquipos(snapshot);
 
                 return _equipo.listaEquipos.isEmpty
-                    ? NoData(Idioma().noData)
+                    ? NoData(noData)
                     : SingleChildScrollView(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: Column(

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:torneos/app/models/campeonato_model.dart';
-import 'package:torneos/app/utils/idioma.dart';
+import 'package:torneos/app/utils/strings.dart';
 
 import '../../app/models/equipo.dart';
 import '../../app/utils/colecciones_id.dart';
@@ -73,7 +73,7 @@ class _PosicionesPageLandscapeState extends State<PosicionesPageLandscape> {
                 _equipo.getEquipos(snapshot);
 
                 return _equipo.listaEquipos.isEmpty
-                    ? NoData(Idioma().noData)
+                    ? NoData(noData)
                     : SingleChildScrollView(
                         padding: const EdgeInsets.only(top: 10.0),
                         child: Column(

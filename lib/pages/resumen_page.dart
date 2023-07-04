@@ -6,7 +6,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../app/models/encuentro.dart';
 import '../app/models/jugador.dart';
 import '../app/utils/colecciones_id.dart';
-import '../app/utils/idioma.dart';
+import '../app/utils/strings.dart';
 import '../app/widgets/loading.dart';
 import '../app/widgets/no_data.dart';
 import '../app/widgets/widget_tarjeta.dart';
@@ -24,7 +24,6 @@ class ResumenPage extends StatefulWidget {
 }
 
 class _ResumenPageState extends State<ResumenPage> {
-  final _idioma = Idioma();
   final _jugador = Jugador();
 
   CollectionReference? _referenceJugadoresA;
@@ -44,7 +43,7 @@ class _ResumenPageState extends State<ResumenPage> {
       appBar: AppBar(
         elevation: 0.0,
         title: Text(
-          _idioma.titleResumen.toUpperCase(),
+          titleResumen.toUpperCase(),
           style: const TextStyle(fontSize: 17.0),
         ),
       ),

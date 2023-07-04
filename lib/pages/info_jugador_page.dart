@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 import '../app/models/jugador.dart';
-import '../app/utils/idioma.dart';
+import '../app/utils/strings.dart';
 import '../app/utils/util_images.dart';
 
 class InfoJugador extends StatelessWidget {
@@ -12,12 +12,11 @@ class InfoJugador extends StatelessWidget {
   InfoJugador({super.key, required this.jugador});
 
   final _urlImages = UrlImages();
-  final _idioma = Idioma();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(_idioma.infoJugador)),
+      appBar: AppBar(title: const Text(infoJugador)),
       body: Stack(
         children: <Widget>[
           Container(

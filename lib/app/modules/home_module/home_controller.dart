@@ -1,15 +1,15 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:package_info/package_info.dart';
+import 'package:package_info_plus/package_info_plus.dart';
+// import 'package:package_info/package_info.dart';
 import 'package:torneos/app/data/provider/campeonato_provider.dart';
 import 'package:torneos/app/data/provider/login_provider.dart';
 import 'package:torneos/app/data/provider/matrix_db_provider.dart';
 import 'package:torneos/app/models/campeonato_model.dart';
 
-import '../../utils/idioma.dart';
+import '../../utils/strings.dart';
 import '../../utils/util_images.dart';
 import '../../models/initial_doc.dart';
 import '../../theme/app_colors.dart';
@@ -21,13 +21,13 @@ class HomeController extends GetxController
   final initialDoc = InitialDoc().obs;
 
   final urlImages = UrlImages();
-  final idioma = Idioma();
+
   // final colors = UtilColors();
 
   final User? user = FirebaseAuth.instance.currentUser;
-  CollectionReference? _referenceBase;
 
-  final PackageInfo infoApps = PackageInfo(
+  // final PackageInfo infoApps = PackageInfo(
+  PackageInfo infoApps = PackageInfo(
     version: '',
     appName: '',
     packageName: '',
@@ -37,30 +37,31 @@ class HomeController extends GetxController
   //INFORMACION SORE LA APLICACION
   Future<Null> _initInfoApp() async {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
-    // setState(() {
-    //   _infoApps = packageInfo;
-    // });
+
+    infoApps = packageInfo;
   }
 
   //Programamos el boton atras
-  Future<bool?> buildAtras() async {
+  Future<bool> buildAtras() async {
     await Get.dialog(
       AlertDialog(
-        title: Text(idioma.salirDeApp),
+        title: Text(salirDeApp),
         actions: <Widget>[
           TextButton(
-            child: Text(idioma.cancelar),
+            child: Text(cancelar),
             onPressed: () => Get.back(canPop: false),
           ),
           MaterialButton(
             color: primaryColor,
             textColor: Colors.white,
             onPressed: () => SystemNavigator.pop(),
-            child: Text(idioma.aceptar),
+            child: Text(aceptar),
           ),
         ],
       ),
     );
+
+    return false;
   }
 
   //INFORMACION ACERCA DE LA APLICACION
@@ -72,14 +73,12 @@ class HomeController extends GetxController
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: <Widget>[
-
             //Nombre app
-            // Text(
-            //   infoApps.appName.toUpperCase(),
-            //   textAlign: TextAlign.center,
-            //   style: const TextStyle(fontSize: 20.0, color: Colors.green),
-            // ),
-
+            Text(
+              infoApps.appName.toUpperCase(),
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 20.0),
+            ),
 
             const SizedBox(height: 10.0),
             CircleAvatar(
@@ -90,13 +89,15 @@ class HomeController extends GetxController
             const SizedBox(height: 10.0),
 
             //Version app
-            // Text(
-            //   'Version: ${infoApps.version}',
-            //   style: const TextStyle(fontSize: 20.0, color: Colors.green),
-            // ),
+            Text(
+              'Version: ${infoApps.version}',
+              style: const TextStyle(
+                fontSize: 20.0,
+              ),
+            ),
             const SizedBox(height: 15.0),
             Text(
-              idioma.developers,
+              developers,
               textAlign: TextAlign.center,
               style: const TextStyle(fontSize: 15.0, color: Colors.white),
             ),
@@ -109,7 +110,7 @@ class HomeController extends GetxController
           color: buttonColor.withOpacity(0.7),
           textColor: Colors.white,
           onPressed: () => Get.back(),
-          child: Text(idioma.aceptar),
+          child: Text(aceptar),
         )
       ],
     ));
@@ -130,6 +131,7 @@ class HomeController extends GetxController
 
   @override
   void onInit() {
+    _initInfoApp();
     _leerDatoDeCampeonato();
     initialDoc.bindStream(MatrixDbProvider().readDoc());
     super.onInit();

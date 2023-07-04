@@ -38,8 +38,11 @@ class Jugador implements Comparable<Jugador> {
 
   List<Jugador> jugadores = [];
 
-  void getJugadoresTG({required AsyncSnapshot<
-      QuerySnapshot> snapshot, required List tarjetas, required int posTarjeta,}) {
+  void getJugadoresTG({
+    required AsyncSnapshot<QuerySnapshot> snapshot,
+    required List tarjetas,
+    required int posTarjeta,
+  }) {
     jugadores.clear();
 
     for (var document in snapshot.data!.docs) {
@@ -62,81 +65,65 @@ class Jugador implements Comparable<Jugador> {
   }
 
   List<Jugador> jugadoresEquipo = [];
-  int _edadJugador = 0;
 
   void getJugadoresEquipo({required AsyncSnapshot<QuerySnapshot> snapshot}) {
     jugadoresEquipo.clear();
 
-    snapshot.data!.docs.forEach((document) {
-      // if (document['fNacimiento'] != null) {
-      //   try {
-      //     _edadJugador = getEdad(document['fNacimiento']);
-      //
-      //     if (_edadJugador != document['edad']) {
-      //       document.reference.update({
-      //         'edad': _edadJugador,
-      //       });
-      //     }
-      //   } catch (error) {
-      //     print('ERROR: $error');
-      //   }
-      // }
+    for (var document in snapshot.data!.docs) {
+      jugadoresEquipo.add(
+        Jugador(
+            id: document['idJugador'],
+            parameter: document['name'],
+            ascendente: true,
+            name: document['name'],
+            equipo: document['equipo'],
+            dorsal: document['dorsal'],
+            goles: document['goles'],
+            amarillas: document['amarillas'],
+            rojas: document['rojas'],
+            imagen: document['imagen'],
+            portada: document['portada'],
+            fNacimiento: document['fNacimiento'],
+            edad: document['edad'],
+            category: document['category']),
+      );
+    }
 
-    jugadoresEquipo.add(
-      Jugador(
-          id: document['idJugador'],
-          parameter: document['name'],
-          ascendente: true,
-          name: document['name'],
-          equipo: document['equipo'],
-          dorsal: document['dorsal'],
-          goles: document['goles'],
-          amarillas: document['amarillas'],
-          rojas: document['rojas'],
-          imagen: document['imagen'],
-          portada: document['portada'],
-          fNacimiento: document['fNacimiento'],
-          edad: document['edad'],
-          category: document['category']),
-    );
+    jugadoresEquipo.sort();
   }
 
-  );
+  List<Jugador> jugadoresResumen = [];
 
-  jugadoresEquipo.sort();
-}
-
-List<Jugador> jugadoresResumen = [];
-
-void getJugadoresResumen(AsyncSnapshot<QuerySnapshot> snapshot) {
-  jugadoresResumen.clear();
-  snapshot.data!.docs.forEach((document) {
-    _addJugador(document);
-  });
-}
+  void getJugadoresResumen(AsyncSnapshot<QuerySnapshot> snapshot) {
+    jugadoresResumen.clear();
+    snapshot.data!.docs.forEach((document) {
+      _addJugador(document);
+    });
+  }
 
 //Comprobar desempeño del jugador
-void _addJugador(DocumentSnapshot document) {
-  if (document['goles'] > 0 ||
-      document['amarillas'] > 0 ||
-      document['rojas'] > 0) {
-    jugadoresResumen.add(Jugador(
-      name: document['name'],
-      dorsal: document['dorsal'],
-      goles: document['goles'],
-      amarillas: document['amarillas'],
-      rojas: document['rojas'],
-      parameter: document['name'],
-      ascendente: true,
-    ));
+  void _addJugador(DocumentSnapshot document) {
+    if (document['goles'] > 0 ||
+        document['amarillas'] > 0 ||
+        document['rojas'] > 0) {
+      jugadoresResumen.add(Jugador(
+        name: document['name'],
+        dorsal: document['dorsal'],
+        goles: document['goles'],
+        amarillas: document['amarillas'],
+        rojas: document['rojas'],
+        parameter: document['name'],
+        ascendente: true,
+      ));
+    }
+  }
+
+  @override
+  compareTo(Jugador j1) {
+    if (ascendente) {
+      return parameter.compareTo(j1.parameter);
+    } else {
+      return j1.parameter.compareTo(parameter);
+    }
   }
 }
-
-@override
-compareTo(Jugador j1) {
-  if (ascendente) {
-    return parameter.compareTo(j1.parameter);
-  } else {
-    return j1.parameter.compareTo(parameter);
-  }
-}}

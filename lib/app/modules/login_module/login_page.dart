@@ -6,6 +6,7 @@ import 'package:torneos/app/modules/login_module/widgets/login_button.dart';
 import 'package:torneos/app/modules/login_module/widgets/text_helper.dart';
 
 import '../../routes/app_pages.dart';
+import '../../utils/strings.dart';
 
 class LoginPage extends GetView<LoginController> {
   const LoginPage({super.key});
@@ -45,7 +46,7 @@ class LoginPage extends GetView<LoginController> {
             child: Column(
               children: <Widget>[
                 //Texto superior
-                TextHelper(title: controller.idioma.nota, size: 16),
+                TextHelper(title: nota, size: 16),
 
                 //Logo de App
                 Image.asset(
@@ -57,7 +58,7 @@ class LoginPage extends GetView<LoginController> {
                 //Boton de inicio de sesion
                 LoginButtom(
                   icon: const Icon(FontAwesomeIcons.google),
-                  label: controller.idioma.google,
+                  label: google,
                   onPressed: () {
                     controller.loginProvider.loginGoogle().then(
                           (value) => Get.offNamed(Routes.HOME),
@@ -66,7 +67,7 @@ class LoginPage extends GetView<LoginController> {
                 ),
 
                 //Ayuda boton de inicio
-                TextHelper(title: controller.idioma.iniciaConGoogle, size: 13),
+                TextHelper(title: iniciaConGoogle, size: 13),
               ],
             ),
           ),

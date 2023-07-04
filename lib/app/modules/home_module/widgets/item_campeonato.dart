@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:torneos/app/models/campeonato_model.dart';
 import 'package:torneos/app/modules/home_module/home_controller.dart';
+import 'package:torneos/app/routes/app_pages.dart';
 
-import '../../../../pages/initial_page.dart';
 import '../../../theme/app_colors.dart';
+import '../../../utils/strings.dart';
 
 class ItemCampeonato extends GetView<HomeController> {
   final CampeonatoModel campeonato;
@@ -34,17 +35,15 @@ class ItemCampeonato extends GetView<HomeController> {
         subtitle: Text(
           campeonato.campeon == ''
               ? campeonato.idaVuelta
-                  ? controller.idioma.idadVuelta
-                  : controller.idioma.soloIda
+                  ? idadVuelta
+                  : soloIda
               : campeonato.campeon,
           style:
               const TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
         ),
         onTap: () {
-          final route = MaterialPageRoute(
-            builder: (context) => InitialPage(campeonato: campeonato),
-          );
-          Navigator.push(context, route);
+          Get.toNamed(Routes.INITIAL, arguments: campeonato);
+
         },
       ),
     );

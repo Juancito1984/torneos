@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 
-import '../utils/idioma.dart';
+import '../utils/strings.dart';
 import '../utils/util_images.dart';
 
 
 class Loading extends StatelessWidget {
   final _urlImages = UrlImages();
-  final _idioma = Idioma();
 
   Loading({super.key});
 
@@ -20,7 +19,7 @@ class Loading extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(top: 10.0),
           child: Text(
-            _idioma.cargando,
+            cargando,
             style: const TextStyle(fontSize: 18.0),
           ),
         ),

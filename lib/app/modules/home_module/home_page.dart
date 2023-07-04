@@ -6,6 +6,8 @@ import 'package:torneos/app/modules/home_module/widgets/list_campeonatos.dart';
 import 'package:torneos/app/widgets/loading.dart';
 import 'package:torneos/app/widgets/no_data.dart';
 
+import '../../utils/strings.dart';
+
 class HomePage extends GetView<HomeController> {
   const HomePage({super.key});
 
@@ -15,17 +17,15 @@ class HomePage extends GetView<HomeController> {
       () => controller.initialDoc.value.isActive
           ? WillPopScope(
               onWillPop: () async {
-                final popupOut = await controller.buildAtras();
-                return popupOut!;
+                return await controller.buildAtras();
               },
               child: Scaffold(
                 drawer: const HomeDrawer(),
-                appBar: AppBar(
-                    title: Text(controller.idioma.titleHomePage.toUpperCase())),
+                appBar: AppBar(title: Text(titleHomePage.toUpperCase())),
                 body: controller.obx(
                   (state) => ListCampeonatos(campeonatos: state!),
                   onLoading: Loading(),
-                  onEmpty: NoData(controller.idioma.noData),
+                  onEmpty: NoData(noData),
                   onError: (error) => NoData(error!),
                 ),
               ),
@@ -36,7 +36,7 @@ class HomePage extends GetView<HomeController> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Image.asset(controller.urlImages.imageNoData, width: 160),
-                    NoData(controller.idioma.baseDesactivada)
+                    NoData(baseDesactivada)
                   ],
                 ),
               ),

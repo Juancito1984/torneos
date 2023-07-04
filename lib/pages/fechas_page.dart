@@ -8,7 +8,7 @@ import 'package:torneos/pages/partidos_fecha.dart';
 
 import '../app/models/fecha.dart';
 import '../app/utils/colecciones_id.dart';
-import '../app/utils/idioma.dart';
+import '../app/utils/strings.dart';
 import '../app/widgets/loading.dart';
 import '../app/widgets/no_data.dart';
 
@@ -23,7 +23,6 @@ class FechasPage extends StatefulWidget {
 }
 
 class _FechasPageState extends State<FechasPage> {
-  final _idioma = Idioma();
   final _fecha = Fecha();
 
   CollectionReference? _referenceFechas;
@@ -65,7 +64,7 @@ class _FechasPageState extends State<FechasPage> {
         _fecha.getFechas(snapshot);
 
         return _fecha.fechas.isEmpty
-            ? NoData(_idioma.noFechas)
+            ? const NoData(noFechas)
             : SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,

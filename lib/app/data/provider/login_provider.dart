@@ -1,10 +1,7 @@
-import 'package:get/get.dart';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:torneos/app/data/repository/login_repository.dart';
-import 'package:torneos/app/routes/app_pages.dart';
 
 class LoginProvider extends LoginRepository {
   LoginProvider._();
@@ -20,7 +17,7 @@ class LoginProvider extends LoginRepository {
     final GoogleSignIn googleSignIn = GoogleSignIn();
     final FirebaseAuth auth = FirebaseAuth.instance;
     final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
-    User? firebaseUser;
+    // User? firebaseUser;
 
     if (googleUser != null) {
       final GoogleSignInAuthentication googleAuth =
@@ -31,7 +28,8 @@ class LoginProvider extends LoginRepository {
         idToken: googleAuth.idToken,
       );
 
-      firebaseUser = (await auth.signInWithCredential(credential)).user;
+      // firebaseUser = (await auth.signInWithCredential(credential)).user;
+     (await auth.signInWithCredential(credential)).user;
     }
 
     // return firebaseUser;

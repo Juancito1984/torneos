@@ -7,4 +7,5 @@ abstract class Routes {
   static const SPLASH = '/splash'; // Splash page
   static const LOGIN = '/login'; // Login page
   static const HOME = '/home'; // Home page
+  static const INITIAL = '/initial'; // Initial page
 }

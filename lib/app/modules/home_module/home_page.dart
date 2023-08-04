@@ -35,7 +35,7 @@ class HomePage extends GetView<HomeController> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Image.asset(controller.urlImages.imageNoData, width: 160),
+                    Image.asset(controller.urlImages.noData, width: 160),
                     NoData(controller.idioma.baseDesactivada)
                   ],
                 ),

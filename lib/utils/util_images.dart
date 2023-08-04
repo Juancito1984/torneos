@@ -18,5 +18,5 @@ class UrlImages {
 
   //PNG
   final String initialLogo='assets/png/initialLogo.png';
-  final String imageNoData='assets/png/noData.png';
+  final String noData='assets/png/noData.png';
 }

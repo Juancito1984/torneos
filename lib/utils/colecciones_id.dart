@@ -1,7 +1,9 @@
 //COLECCION BASE GENERAL
 
 
-const String coleccionBase = 'MatrixDB-PB';
+// const String coleccionBase = 'MatrixDB-PB';
+const String coleccionBase = 'MatrixDB';
+
 const String initialDoc = 'InitialDoc';
 const String coleccionTorneos = 'TorneosDB';
 
@@ -12,7 +14,8 @@ const String coleccionTablaGoleadores = 'TABLA DE GOLEADORES';
 const String coleccionFechas = 'FECHAS';
 
 //COLECCION EQUIPOS
-const String coleccionEquipos = 'EQUIPOS-PB';
+// const String coleccionEquipos = 'EQUIPOS-PB';
+const String coleccionEquipos = 'EQUIPOS';
 
 //COLECCION CUARTOS FINAL
 const String coleccionCuartosFinal = 'CUARTOS FINAL';

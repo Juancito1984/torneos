@@ -93,6 +93,15 @@ class _PartidosFechaState extends State<PartidosFecha> {
   }
 
   Widget _itemPartido(Encuentro encuentro) {
+    int deudaEquipoA = (widget.campeonato.cCancha +
+            (encuentro.amarillasA * widget.campeonato.cAmarillas) +
+            (encuentro.rojasA * widget.campeonato.cRojas)) -
+        encuentro.pagoEquipoA;
+    int deudaEquipoB = (widget.campeonato.cCancha +
+            (encuentro.amarillasB * widget.campeonato.cAmarillas) +
+            (encuentro.rojasB * widget.campeonato.cRojas)) -
+        encuentro.pagoEquipoB;
+
     return InkWell(
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 5.0, vertical: 5.0),
@@ -125,10 +134,28 @@ class _PartidosFechaState extends State<PartidosFecha> {
                   ),
                   const SizedBox(width: 5.0),
                   Expanded(
-                    child: Text(
-                      encuentro.equipoA,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(color: Colors.white),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          encuentro.equipoA,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        deudaEquipoA != 0 && encuentro.estado == 'Finalizado'
+                            ? const SizedBox(height: 5)
+                            : Container(),
+                        deudaEquipoA != 0 && encuentro.estado == 'Finalizado'
+                            ? Text(
+                                'Deuda: $deudaEquipoA Bs',
+                                style: const TextStyle(
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 12,
+                                ),
+                              )
+                            : Container(),
+                      ],
                     ),
                   ),
                 ],
@@ -171,10 +198,28 @@ class _PartidosFechaState extends State<PartidosFecha> {
               child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: Text(
-                      encuentro.equipoB,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(color: Colors.white),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          encuentro.equipoB,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(color: Colors.white),
+                        ),
+                        deudaEquipoB != 0 && encuentro.estado == 'Finalizado'
+                            ? const SizedBox(height: 5)
+                            : Container(),
+                        deudaEquipoB != 0 && encuentro.estado == 'Finalizado'
+                            ? Text(
+                          'Deuda: $deudaEquipoB Bs',
+                          style: const TextStyle(
+                            color: Colors.red,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 12,
+                          ),
+                        )
+                            : Container(),
+                      ],
                     ),
                   ),
                   const SizedBox(width: 5.0),

@@ -19,6 +19,9 @@ class Encuentro implements Comparable<Encuentro> {
   final String comentario;
   final DocumentReference? reference;
 
+  final int pagoEquipoA;
+  final int pagoEquipoB;
+
   Encuentro({
     this.id = '',
     this.equipoA = '',
@@ -36,6 +39,9 @@ class Encuentro implements Comparable<Encuentro> {
     this.index = 0,
     this.comentario = '',
     this.reference,
+
+    this.pagoEquipoA = 0,
+    this.pagoEquipoB = 0,
   });
 
   List<Encuentro> encuentros = [];
@@ -60,6 +66,9 @@ class Encuentro implements Comparable<Encuentro> {
         estado: document['estado'],
         comentario: document['comentario'],
         index: document['index'],
+
+        pagoEquipoA: document['pagoEquipoA'],
+        pagoEquipoB: document['pagoEquipoB'],
       ));
     });
 

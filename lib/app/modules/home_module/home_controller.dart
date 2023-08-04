@@ -37,6 +37,25 @@ class HomeController extends GetxController
     buildNumber: '',
   );
 
+  @override
+  void onInit() {
+    _leerDatoDeCampeonato();
+    initialDoc.bindStream(MatrixDbProvider().readDoc());
+    super.onInit();
+  }
+  _leerDatoDeCampeonato() {
+    change(null, status: RxStatus.loading());
+    campeonatoProvider.readCampeonatos().listen((event) {
+      if (event.isNotEmpty) {
+        change(event, status: RxStatus.success());
+      } else {
+        change(null, status: RxStatus.empty());
+      }
+    }).onError((error) {
+      return change(null, status: RxStatus.error(error));
+    });
+  }
+
   //INFORMACION SORE LA APLICACION
   Future<Null> _initInfoApp() async {
     final PackageInfo packageInfo = await PackageInfo.fromPlatform();
@@ -118,23 +137,7 @@ class HomeController extends GetxController
     ));
   }
 
-  _leerDatoDeCampeonato() {
-    change(null, status: RxStatus.loading());
-    campeonatoProvider.readCampeonatos().listen((event) {
-      if (event.isNotEmpty) {
-        change(event, status: RxStatus.success());
-      } else {
-        change(null, status: RxStatus.empty());
-      }
-    }).onError((error) {
-      return change(null, status: RxStatus.error(error));
-    });
-  }
 
-  @override
-  void onInit() {
-    _leerDatoDeCampeonato();
-    initialDoc.bindStream(MatrixDbProvider().readDoc());
-    super.onInit();
-  }
+
+
 }

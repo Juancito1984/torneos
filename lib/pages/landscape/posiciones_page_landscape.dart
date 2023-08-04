@@ -5,7 +5,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:torneos/app/models/campeonato_model.dart';
 import 'package:torneos/utils/util_idioma.dart';
 
-import '../../models/my_campeonato.dart';
 import '../../models/equipo.dart';
 import '../../utils/colecciones_id.dart';
 import '../../utils/util_images.dart';
@@ -106,6 +105,8 @@ class _PosicionesPageLandscapeState extends State<PosicionesPageLandscape> {
     int n1 = equipo.gFavor;
     int n2 = equipo.gContra;
 
+    final deuda = equipo.deuda - equipo.pagado;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: <Widget>[
@@ -145,9 +146,28 @@ class _PosicionesPageLandscapeState extends State<PosicionesPageLandscape> {
                       ),
               ),
               const SizedBox(width: 15.0),
+              //NOMBRE
               Expanded(
-                child: Text(equipo.name),
-              )
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      equipo.name,
+                      style: const TextStyle(fontSize: 13.0),
+                    ),
+                    deuda > 0
+                        ? Text(
+                      'Deuda: $deuda Bs',
+                      style: const TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.w500,
+                        fontSize: 10,
+                      ),
+                    )
+                        : Container()
+                  ],
+                ),
+              ),
             ],
           ),
         ),

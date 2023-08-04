@@ -4,7 +4,7 @@ class InitialDoc {
   final String title;
   final bool isActive;
 
-  InitialDoc({this.isActive = false, this.title = ''});
+  InitialDoc({this.isActive = true, this.title = ''});
 
   factory InitialDoc.fromDocument(DocumentSnapshot document) {
     return InitialDoc(

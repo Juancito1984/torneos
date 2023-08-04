@@ -13,6 +13,9 @@ class Equipo implements Comparable<Equipo> {
   final int gContra;
   final String id;
 
+  final double deuda;
+  final double pagado;
+
   Equipo({
     this.imagen='',
     this.portada='',
@@ -23,6 +26,10 @@ class Equipo implements Comparable<Equipo> {
     this.gFavor=0,
     this.gContra=0,
     this.id='',
+
+    this.deuda = 0,
+    this.pagado = 0,
+
   });
 
   List<Equipo> listaEquipos = [];
@@ -41,6 +48,9 @@ class Equipo implements Comparable<Equipo> {
         pPerdidos: document['pPerdidos'],
         gFavor: document['gfavor'],
         gContra: document['gcontra'],
+
+        deuda: document['deuda'].toDouble(),
+        pagado: document['pagado'].toDouble(),
       ));
     }
 

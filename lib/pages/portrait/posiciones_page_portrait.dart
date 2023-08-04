@@ -47,67 +47,63 @@ class _PosicionesPagePortraitState extends State<PosicionesPagePortrait> {
   }
 
   Widget _body() {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Container(
-            child: Row(
-              children: <Widget>[
-                _itemTituloTable('POS'),
-                Expanded(child: _itemTituloTable('EQUIPO')),
-                _itemTituloTable('J'),
-                Container(
-                  width: 60.0,
-                  child: _itemTituloTable('GOL'),
-                ),
-                _itemTituloTable('+/-'),
-                _itemTituloTable('PTS'),
-              ],
+    return Column(
+      children: <Widget>[
+        Row(
+          children: <Widget>[
+            _itemTituloTable('POS'),
+            Expanded(child: _itemTituloTable('EQUIPO')),
+            _itemTituloTable('J'),
+            SizedBox(
+              width: 60.0,
+              child: _itemTituloTable('GOL'),
             ),
-          ),
-          Expanded(
-            child: StreamBuilder(
-              stream: _referenceEquipos!.snapshots(),
-              builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
-                if (!snapshot.hasData) return WidgetLoading();
+            _itemTituloTable('+/-'),
+            _itemTituloTable('PTS'),
+          ],
+        ),
+        Expanded(
+          child: StreamBuilder(
+            stream: _referenceEquipos!.snapshots(),
+            builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              if (!snapshot.hasData) return WidgetLoading();
 
-                _equipo.getEquipos(snapshot);
+              _equipo.getEquipos(snapshot);
 
-                return _equipo.listaEquipos.isEmpty
-                    ? NoData(Idioma().noData)
-                    : SingleChildScrollView(
-                        padding: const EdgeInsets.only(top: 10.0),
-                        child: Column(
-                          children: _equipo.listaEquipos.map((equipo) {
-                            return Column(
-                              mainAxisSize: MainAxisSize.min,
-                              children: <Widget>[
-                                FadeIn(
-                                  delay: Duration(
-                                      milliseconds: 100 *
-                                          _equipo.listaEquipos.indexOf(equipo)),
-                                  child: _itemEquipo(equipo),
-                                ),
-                                Divider(
-                                  color:
-                                      _equipo.listaEquipos.indexOf(equipo) < 8
-                                          ? Colors.green
-                                          : Colors.red,
-                                ),
-                              ],
-                            );
-                          }).toList(),
-                        ),
-                      );
-              },
-            ),
+              return _equipo.listaEquipos.isEmpty
+                  ? NoData(Idioma().noData)
+                  : SingleChildScrollView(
+                      padding: const EdgeInsets.only(top: 10.0),
+                      child: Column(
+                        children: _equipo.listaEquipos.map((equipo) {
+                          return Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              FadeIn(
+                                delay: Duration(
+                                    milliseconds: 100 *
+                                        _equipo.listaEquipos.indexOf(equipo)),
+                                child: _itemEquipo(equipo),
+                              ),
+                              Divider(
+                                color: _equipo.listaEquipos.indexOf(equipo) < 8
+                                    ? Colors.green
+                                    : Colors.red,
+                              ),
+                            ],
+                          );
+                        }).toList(),
+                      ),
+                    );
+            },
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
   Widget _itemEquipo(Equipo equipo) {
+    final deuda = equipo.deuda - equipo.pagado;
     return InkWell(
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -157,9 +153,24 @@ class _PosicionesPagePortraitState extends State<PosicionesPagePortrait> {
 
                 //NOMBRE
                 Expanded(
-                  child: Text(
-                    equipo.name,
-                    style: const TextStyle(fontSize: 13.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        equipo.name,
+                        style: const TextStyle(fontSize: 13.0),
+                      ),
+                      deuda > 0
+                          ? Text(
+                              'Deuda: $deuda Bs',
+                              style: const TextStyle(
+                                color: Colors.red,
+                                fontWeight: FontWeight.w500,
+                                fontSize: 10,
+                              ),
+                            )
+                          : Container()
+                    ],
                   ),
                 ),
               ],

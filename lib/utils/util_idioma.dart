@@ -18,8 +18,8 @@ class Idioma {
 
   //DRAWER TEXT
   final String salirDeApp = 'Deseas salir de la aplicacion?';
-  final String user = 'LIGA DE PROFESIONALES';
-  final String email = 'miligalpf7rib@gmail.com';
+  final String user = 'RESIDENTES PROFESIONALES';
+  final String email = 'residentesnacionales@gmail.com';
   final String titleAcerca = 'Acerca de...';
   final String despAcerca = 'Informacion acerca de la aplicacion';
   final String cerrarSesion = 'Cerrar sesion';

@@ -9,6 +9,12 @@ class CampeonatoModel {
   final String campeon;
   final DocumentReference? reference;
 
+  final int cAmarillas;
+  final int cRojas;
+  final int cCancha;
+  final int pGanador;
+  final int pEmpate;
+
   CampeonatoModel({
     this.name = '',
     this.index = 0,
@@ -17,6 +23,13 @@ class CampeonatoModel {
     this.idaVuelta = false,
     this.campeon = '',
     this.reference,
+
+    this.cAmarillas = 0,
+    this.cRojas = 0,
+    this.cCancha = 0,
+    this.pGanador = 0,
+    this.pEmpate = 0,
+
   });
 
   factory CampeonatoModel.fromDocument(DocumentSnapshot document) {
@@ -28,6 +41,13 @@ class CampeonatoModel {
       idaVuelta: document['idaVuelta'],
       campeon: document['campeon'],
       reference: document.reference,
+
+      cAmarillas: document['cAmarillas'],
+      cRojas: document['cRojas'],
+      cCancha: document['cCancha'],
+      pGanador: document['pGanador'],
+      pEmpate: document['pEmpate'],
+
     );
   }
 }

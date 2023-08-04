@@ -20,7 +20,8 @@ class JugadoresPage extends StatefulWidget {
   final CampeonatoModel campeonato;
   final Equipo equipo;
 
-  JugadoresPage({super.key, required this.campeonato, required this.equipo});
+  const JugadoresPage(
+      {super.key, required this.campeonato, required this.equipo});
 
   @override
   _JugadoresPageState createState() => _JugadoresPageState();
@@ -92,7 +93,7 @@ class _JugadoresPageState extends State<JugadoresPage> {
         _jugador.getJugadoresEquipo(snapshot: snapshot);
 
         return _jugador.jugadoresEquipo.isEmpty
-            ?  NoData(Idioma().noData)
+            ? NoData(Idioma().noData)
             : SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
                 child: Column(
@@ -125,7 +126,11 @@ class _JugadoresPageState extends State<JugadoresPage> {
       subtitle1: 'Fecha de nacimiento: ${jugador.fNacimiento}',
       subtitle2: 'Edad: ${jugador.edad} años',
       treailing: Text(
-        jugador.category,
+        jugador.amarillas == 3
+            ? 'Suspendido'
+            : jugador.rojas >= 1
+                ? 'Suspendido'
+                : jugador.category,
         style: TextStyle(
           color: jugador.edad <= 39 ? Colors.green : Colors.red,
           fontWeight: FontWeight.bold,

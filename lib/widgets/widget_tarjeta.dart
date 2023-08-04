@@ -26,6 +26,7 @@ class WidgetTarjeta extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
                 child: CachedNetworkImage(
+                  width: 60,
                   imageUrl: encuentro.logoA != ''
                       ? encuentro.logoA
                       : _urlImages.noImage,
@@ -67,6 +68,7 @@ class WidgetTarjeta extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(10.0),
                 child: CachedNetworkImage(
+                  width: 60,
                   imageUrl: encuentro.logoB != ''
                       ? encuentro.logoB
                       : _urlImages.noImage,

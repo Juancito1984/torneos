@@ -6,7 +6,6 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:torneos/app/models/campeonato_model.dart';
 import 'package:torneos/pages/partidos_fecha.dart';
 
-import '../models/my_campeonato.dart';
 import '../models/fecha.dart';
 import '../utils/colecciones_id.dart';
 import '../utils/util_idioma.dart';

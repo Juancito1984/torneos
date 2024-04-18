@@ -6,6 +6,8 @@ import 'package:torneos/app/modules/splash_module/splash_page.dart';
 import 'package:torneos/app/routes/app_pages.dart';
 import 'package:torneos/app/theme/app_colors.dart';
 
+//TORNEOS UPDATE 17/04/2024
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
